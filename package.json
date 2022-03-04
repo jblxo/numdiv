@@ -1,6 +1,6 @@
 {
   "name": "numdiv",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
