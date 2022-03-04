@@ -8,7 +8,7 @@ import {
   TableBody,
   TablePagination,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 
 export type NumDiv = { number: number; text: string };
 
@@ -19,6 +19,10 @@ type Props = {
 const NumDivsTable = ({ numDivs }: Props) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+
+  useEffect(() => {
+    setPage(0);
+  }, [numDivs]);
 
   const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
