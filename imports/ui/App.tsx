@@ -8,7 +8,7 @@ export const App = () => {
   const [numbersRange, setNumbersRange] = useState<number[]>([1, 100]);
 
   const computeResults = (from: number, to: number) => {
-    const result = [];
+    const result: NumDiv[] = [];
 
     for (let i = from; i < to + 1; i++) {
       if (i % 15 === 0) {
