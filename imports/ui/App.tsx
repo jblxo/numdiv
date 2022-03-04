@@ -9,31 +9,43 @@ export const App = () => {
   const [numbersRange, setNumbersRange] = useState<number[]>([1, 100]);
 
   const computeResults = (from: number, to: number) => {
-    const result: NumDiv[] = [];
+    const numbers = Array.from({ length: to + 1 - from }, (_, k) => k + from);
 
-    for (let i = from; i < to + 1; i++) {
-      if (i % 15 === 0) {
-        result.push({
-          number: i,
-          text: "RobotICT",
-        });
-      } else if (i % 3 === 0) {
-        result.push({
-          number: i,
-          text: "Robot",
-        });
-      } else if (i % 5 === 0) {
-        result.push({
-          number: i,
-          text: "ICT",
-        });
+    const result = numbers.reduce((prev, number) => {
+      if (number % 15 === 0) {
+        return [
+          ...prev,
+          {
+            number,
+            text: "RobotICT",
+          },
+        ];
+      } else if (number % 3 === 0) {
+        return [
+          ...prev,
+          {
+            number,
+            text: "Robot",
+          },
+        ];
+      } else if (number % 5 === 0) {
+        return [
+          ...prev,
+          {
+            number,
+            text: "ICT",
+          },
+        ];
       } else {
-        result.push({
-          number: i,
-          text: i.toString(),
-        });
+        return [
+          ...prev,
+          {
+            number,
+            text: number.toString(),
+          },
+        ];
       }
-    }
+    }, [] as NumDiv[]);
 
     setNumDivs(result);
   };
